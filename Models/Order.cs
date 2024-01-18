@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DemoGit.Models
+namespace MovieShop.Models
 {
     public partial class Order
     {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tn6RZ8wrwA29bFDzCsnTCQigkXaUQPJu27VhHz9apv66NawE/9J7MwMLrsvPEjIWc9A2srZMYAUGqCtAVnLafQ==",
+  "dgSpecHash": "eLmrNTDXbhtB8LWr0W6fvsEzndO5yQjcjGG1m7Y60s9e1WeEYS210IsWCrfcsz9t1rBF8ZSTaVFPy8AQCQlDdQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rille\\Source\\Repos\\DemoGit\\DemoGit\\DemoGit.csproj",
+  "projectFilePath": "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\MovieShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rille\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Rille\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

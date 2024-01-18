@@ -1,8 +1,8 @@
-﻿using DemoGit.Models;
+﻿using MovieShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace DemoGit.Controllers
+namespace MovieShop.Controllers
 {
     public class HomeController : Controller
     {

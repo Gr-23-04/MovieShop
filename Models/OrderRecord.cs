@@ -1,4 +1,4 @@
-﻿namespace DemoGit.Models
+﻿namespace MovieShop.Models
 {
     public partial class OrderRecord
     {

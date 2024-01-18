@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace DemoGit.Controllers
+namespace MovieShop.Controllers
 {
     public class OrderController : Controller
     {

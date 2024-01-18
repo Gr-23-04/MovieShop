@@ -9664,11 +9664,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rille\\Source\\Repos\\DemoGit\\DemoGit\\DemoGit.csproj",
-      "projectName": "DemoGit",
-      "projectPath": "C:\\Users\\Rille\\Source\\Repos\\DemoGit\\DemoGit\\DemoGit.csproj",
+      "projectUniqueName": "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\MovieShop.csproj",
+      "projectName": "MovieShop",
+      "projectPath": "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\MovieShop.csproj",
       "packagesPath": "C:\\Users\\Rille\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rille\\Source\\Repos\\DemoGit\\DemoGit\\obj\\",
+      "outputPath": "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Rille\\AppData\\Roaming\\NuGet\\NuGet.Config",

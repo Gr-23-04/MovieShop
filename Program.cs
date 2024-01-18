@@ -1,4 +1,4 @@
-namespace DemoGit
+namespace MovieShop
 {
     public class Program
     {
