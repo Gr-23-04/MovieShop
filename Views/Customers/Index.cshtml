@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Customer>
+
+<table>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+    </tr>
+
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => customer.Firstname)</td>
+            <td>@Html.DisplayFor(modelItem => customer.Lastname)</td>
+        </tr>
+    }
+</table>
