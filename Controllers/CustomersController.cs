@@ -1,12 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MovieShop.Data;
+
 
 namespace MovieShop.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly DbContext _context;
+        private readonly MovieShopDbContext _context;
 
-        public CustomersController(DbContext context)
+        public CustomersController(MovieShopDbContext context)
         {
             _context = context;
         }
