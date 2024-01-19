@@ -38,7 +38,7 @@ namespace MovieShop.Controllers
                 return RedirectToAction("SubmitMovie");
             }
 
-            TempData["FailMessage"] = "Movie could not be submitted."; //Sens fail-message is unsuccesful
+            TempData["FailMessage"] = "Movie could not be submitted."; //Sends fail-message is unsuccesful
             return View("SubmitMovie", movie);
         }
 
