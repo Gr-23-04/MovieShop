@@ -1,0 +1,2 @@
+Microsoft.EntityFrameworkCore 7.0
+Microsoft.EntityFrameworkCore.Sqlserver 7.0
