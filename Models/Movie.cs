@@ -8,5 +8,7 @@
         public int ReleaseYear { get; set; }
         public decimal Price { get; set; }
         public string ImageURL { get; set; }
+
+        public ICollection<OrderRow> OrderRows { get; set; }
     }
 }

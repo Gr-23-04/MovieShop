@@ -13,5 +13,7 @@
         public string DeliveryCity { get; set; }
         public string EmailAddress { get; set; }
         public int PhoneNo { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
     }
 }
