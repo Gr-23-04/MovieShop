@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\MovieShop.csproj": {}
+    "C:\\Users\\Jayashree\\Source\\Repos\\MovieShop\\MovieShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\MovieShop.csproj": {
+    "C:\\Users\\Jayashree\\Source\\Repos\\MovieShop\\MovieShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\MovieShop.csproj",
+        "projectUniqueName": "C:\\Users\\Jayashree\\Source\\Repos\\MovieShop\\MovieShop.csproj",
         "projectName": "MovieShop",
-        "projectPath": "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\MovieShop.csproj",
-        "packagesPath": "C:\\Users\\Rille\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rille\\source\\repos\\DemoGit\\MovieShop\\obj\\",
+        "projectPath": "C:\\Users\\Jayashree\\Source\\Repos\\MovieShop\\MovieShop.csproj",
+        "packagesPath": "C:\\Users\\Jayashree\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jayashree\\Source\\Repos\\MovieShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Rille\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jayashree\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -42,11 +42,17 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.0.15, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.15, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
