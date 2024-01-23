@@ -10,87 +10,87 @@ using MovieShop.Models;
 
 namespace MovieShop.Controllers
 {
-    public class CustomersController : Controller
+    public class MoviesController : Controller
     {
         private readonly MovieShopDbContext _context;
 
-        public CustomersController(MovieShopDbContext context)
+        public MoviesController(MovieShopDbContext context)
         {
             _context = context;
         }
 
-        // GET: Customers
+        // GET: Movies
         public async Task<IActionResult> Index()
         {
-              return _context.Customers != null ? 
-                          View(await _context.Customers.ToListAsync()) :
-                          Problem("Entity set 'MovieShopDbContext.Customers'  is null.");
+              return _context.Movies != null ? 
+                          View(await _context.Movies.ToListAsync()) :
+                          Problem("Entity set 'MovieShopDbContext.Movies'  is null.");
         }
 
-        // GET: Customers/Details/5
+        // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Movies == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var movie = await _context.Movies
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
+            if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(movie);
         }
 
-        // GET: Customers/Create
-        public IActionResult Create()
+        // GET: Movies/Create
+        public IActionResult AddMovie()
         {
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Movies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Firstname,Lastname,BillingAddress,BillingZip,BillingCity,DeliveryAddress,DeliveryZip,DeliveryCity,EmailAddress,PhoneNo")] Customer customer)
+        public async Task<IActionResult> SubmitMovie([Bind("Id,Title,Director,ReleaseYear,Price,ImageURL")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                _context.Add(movie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(movie);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Movies == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie == null)
             {
                 return NotFound();
             }
-            return View(customer);
+            return View(movie);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Movies/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Firstname,Lastname,BillingAddress,BillingZip,BillingCity,DeliveryAddress,DeliveryZip,DeliveryCity,EmailAddress,PhoneNo")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Director,ReleaseYear,Price,ImageURL")] Movie movie)
         {
-            if (id != customer.Id)
+            if (id != movie.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace MovieShop.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
+                    _context.Update(movie);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.Id))
+                    if (!MovieExists(movie.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace MovieShop.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            return View(movie);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Movies/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Movies == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var movie = await _context.Movies
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
+            if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(movie);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Customers == null)
+            if (_context.Movies == null)
             {
-                return Problem("Entity set 'MovieShopDbContext.Customers'  is null.");
+                return Problem("Entity set 'MovieShopDbContext.Movies'  is null.");
             }
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer != null)
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie != null)
             {
-                _context.Customers.Remove(customer);
+                _context.Movies.Remove(movie);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
+        private bool MovieExists(int id)
         {
-          return (_context.Customers?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Movies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

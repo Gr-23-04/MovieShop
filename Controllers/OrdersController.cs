@@ -10,87 +10,90 @@ using MovieShop.Models;
 
 namespace MovieShop.Controllers
 {
-    public class CustomersController : Controller
+    public class OrdersController : Controller
     {
         private readonly MovieShopDbContext _context;
 
-        public CustomersController(MovieShopDbContext context)
+        public OrdersController(MovieShopDbContext context)
         {
             _context = context;
         }
 
-        // GET: Customers
+        // GET: Orders
         public async Task<IActionResult> Index()
         {
-              return _context.Customers != null ? 
-                          View(await _context.Customers.ToListAsync()) :
-                          Problem("Entity set 'MovieShopDbContext.Customers'  is null.");
+            var movieShopDbContext = _context.Orders.Include(o => o.Customer);
+            return View(await movieShopDbContext.ToListAsync());
         }
 
-        // GET: Customers/Details/5
+        // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Orders == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var order = await _context.Orders
+                .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(order);
         }
 
-        // GET: Customers/Create
+        // GET: Orders/Create
         public IActionResult Create()
         {
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id");
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: Orders/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Firstname,Lastname,BillingAddress,BillingZip,BillingCity,DeliveryAddress,DeliveryZip,DeliveryCity,EmailAddress,PhoneNo")] Customer customer)
+        public async Task<IActionResult> Create([Bind("Id,OrderDate,CustomerId")] Order order)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
+                _context.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", order.CustomerId);
+            return View(order);
         }
 
-        // GET: Customers/Edit/5
+        // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Orders == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
             {
                 return NotFound();
             }
-            return View(customer);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", order.CustomerId);
+            return View(order);
         }
 
-        // POST: Customers/Edit/5
+        // POST: Orders/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Firstname,Lastname,BillingAddress,BillingZip,BillingCity,DeliveryAddress,DeliveryZip,DeliveryCity,EmailAddress,PhoneNo")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,OrderDate,CustomerId")] Order order)
         {
-            if (id != customer.Id)
+            if (id != order.Id)
             {
                 return NotFound();
             }
@@ -99,12 +102,12 @@ namespace MovieShop.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
+                    _context.Update(order);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.Id))
+                    if (!OrderExists(order.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +118,51 @@ namespace MovieShop.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(customer);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Id", order.CustomerId);
+            return View(order);
         }
 
-        // GET: Customers/Delete/5
+        // GET: Orders/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null || _context.Orders == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var order = await _context.Orders
+                .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return View(customer);
+            return View(order);
         }
 
-        // POST: Customers/Delete/5
+        // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Customers == null)
+            if (_context.Orders == null)
             {
-                return Problem("Entity set 'MovieShopDbContext.Customers'  is null.");
+                return Problem("Entity set 'MovieShopDbContext.Orders'  is null.");
             }
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer != null)
+            var order = await _context.Orders.FindAsync(id);
+            if (order != null)
             {
-                _context.Customers.Remove(customer);
+                _context.Orders.Remove(order);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
+        private bool OrderExists(int id)
         {
-          return (_context.Customers?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Orders?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
